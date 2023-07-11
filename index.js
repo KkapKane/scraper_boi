@@ -8,8 +8,8 @@ app.use(cors());
 
 const SentimentData = async (url) => {
   const browser = await puppeteer.launch({
+    // args: ["--disable-setuid-sandbox", "--no-sandbox", "--single-process", "--no-zygote"],
     headless: "new",
-    args: ["--disable-setuid-sandbox", "--no-sandbox", "--single-process", "--no-zygote"],
     executablePath:
       process.env.NODE_ENV === "production" ? process.env.PUPPETEER_EXECUTABLE_PATH : puppeteer.executablePath(),
   });
