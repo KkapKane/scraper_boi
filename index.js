@@ -6,7 +6,10 @@ const app = express();
 app.use(cors());
 
 const SentimentData = async (url) => {
-  const browser = await puppeteer.launch({ headless: "new" });
+  const browser = await puppeteer.launch({
+    headless: "new",
+    args: ["--disable-setuid-sandbox", "--no-sandbox", "--single-process", "--no-zygote"],
+  });
   const page = await browser.newPage();
   page.setDefaultNavigationTimeout(0);
   await page.goto(url);
